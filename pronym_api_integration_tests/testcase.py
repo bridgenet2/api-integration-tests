@@ -24,6 +24,9 @@ class ApiIntegrationTestCase(TestCase):
     def delete(self, path=None, **kwargs):
         return self._make_request(path, 'delete', **kwargs)
 
+    def get_base_url(self):
+        return self.base_url
+
     def get_headers(self):
         return {}
 
