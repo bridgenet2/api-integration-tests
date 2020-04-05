@@ -17,9 +17,8 @@ class ApiResponse:
 
 
 class ApiIntegrationClient:
-    def __init__(self, base_url, headers):
+    def __init__(self, base_url):
         self.base_url = base_url
-        self.default_headers = headers
 
     def get(self, path, **kwargs):
         # Rename data to params for get request.

@@ -6,8 +6,7 @@ from .client import ApiIntegrationClient
 class ApiIntegrationTestCase(TestCase):
     def setUp(self):
         TestCase.setUp(self)
-        headers = self.get_headers()
-        self.client = ApiIntegrationClient(self.base_url, headers)
+        self.client = ApiIntegrationClient(self.base_url)
 
     def get(self, path=None, **kwargs):
         return self._make_request(path, 'get', **kwargs)
@@ -34,4 +33,5 @@ class ApiIntegrationTestCase(TestCase):
         handler = getattr(self.client, method)
         if path is None:
             path = self.endpoint_path
+        kwargs.setdefault('headers', self.get_headers())
         return handler(path, **kwargs)
