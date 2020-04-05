@@ -39,7 +39,6 @@ class ApiIntegrationClient:
         return self._execute_request(path, 'delete', **kwargs)
 
     def _execute_request(self, path, method, **kwargs):
-        kwargs.setdefault('headers', self.default_headers)
         url = self._get_url(path)
         if method in ('get', 'post', 'put', 'patch', 'delete'):
             handler = getattr(requests, method)
