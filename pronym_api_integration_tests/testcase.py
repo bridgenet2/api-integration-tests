@@ -33,5 +33,6 @@ class ApiIntegrationTestCase(TestCase):
         handler = getattr(self.client, method)
         if path is None:
             path = self.endpoint_path
-        kwargs.setdefault('headers', self.get_headers())
+        if 'headers' not in kwargs:
+            kwargs['headers'] = self.get_headers()
         return handler(path, **kwargs)
